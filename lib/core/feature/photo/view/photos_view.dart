@@ -22,8 +22,9 @@ class PhotosView extends StatelessWidget {
        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
        itemBuilder: (context, index) {
          return Card(
+           
                     child: ListTile(
-            title: Text(_viewModel.photos[index].title??''),
+            title: Image.network(_viewModel.photos[index].thumbnailUrl??''),
              subtitle: Text(_viewModel.photos[index].title??''),
            ),
          );
