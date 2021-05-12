@@ -1,7 +1,9 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:market_sebet/core/feature/photo/viewmodel/photo_view_model.dart';
 
+final _viewModel=PhotosViewModel();
 class PhotosView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -16,9 +18,15 @@ class PhotosView extends StatelessWidget {
             ],
       ),
       body: GridView.builder(
+        itemCount: _viewModel.photos.length,
        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
        itemBuilder: (context, index) {
-         return Text('data');
+         return Card(
+                    child: ListTile(
+            title: Text(_viewModel.photos[index].title??''),
+             subtitle: Text(_viewModel.photos[index].title??''),
+           ),
+         );
        },),
     );
   }
