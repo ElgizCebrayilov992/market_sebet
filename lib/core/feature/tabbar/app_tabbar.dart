@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:market_sebet/core/feature/photo/view/photos_view.dart';
-import 'package:market_sebet/core/feature/tabbar/model/tabbar_model.dart';
+
+import '../photo/view/photos_view.dart';
+import 'model/tabbar_model.dart';
 
 class AppTabBar extends StatelessWidget {
   final List<TabModel> tabsItem = [

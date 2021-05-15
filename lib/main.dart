@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:market_sebet/core/theme_light.dart';
+import 'package:provider/provider.dart';
 
 import 'core/feature/tabbar/app_tabbar.dart';
+import 'core/theme_light.dart';
+import 'product/manager/shop/shop_manager.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MultiProvider(providers: [
+    Provider<ShopManager>(create: (context) => ShopManager(),)
+  ],child: MyApp(),));
 }
 
 class MyApp extends StatelessWidget {

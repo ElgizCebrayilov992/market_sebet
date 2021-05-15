@@ -3,8 +3,9 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-import 'package:market_sebet/core/feature/photo/model/photo_model.dart';
-import 'package:market_sebet/core/feature/photo/services/iphotos_service.dart';
+
+import '../model/photo_model.dart';
+import 'iphotos_service.dart';
 
 part 'photos_service_path.dart';
 

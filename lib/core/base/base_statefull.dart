@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:market_sebet/core/localete/aplication_string.dart';
+
+import '../localete/aplication_string.dart';
 
 abstract class BaseStatefull<T extends StatefulWidget> extends State<T> {
   ApplicationStrings applicationStrings = ApplicationStrings.instance;

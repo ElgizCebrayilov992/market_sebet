@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
-import 'package:logger/logger.dart';
-import 'package:market_sebet/core/feature/photo/model/photo_model.dart';
-import 'package:market_sebet/core/feature/photo/services/iphotos_service.dart';
-import 'package:market_sebet/core/feature/photo/services/photos_service.dart';
-import 'package:market_sebet/core/network/application_constant.dart';
 import 'package:mobx/mobx.dart';
+
+import '../../../network/application_constant.dart';
+import '../model/photo_model.dart';
+import '../services/iphotos_service.dart';
+import '../services/photos_service.dart';
+
 part 'photo_view_model.g.dart';
 
 class PhotosViewModel = _PhotosViewModelBase with _$PhotosViewModel;
@@ -28,7 +29,7 @@ abstract class _PhotosViewModelBase with Store {
     changeLoading();
     final response = await photosServices.fetchAllPhotos();
     changeLoading();
-    Logger().wtf(response);
+    
 
     photos = response;
   }

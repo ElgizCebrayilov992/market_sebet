@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:market_sebet/core/feature/photo/model/photo_model.dart';
+
+import '../model/photo_model.dart';
 
 abstract class IPhotosServices {
   final Dio dio;
