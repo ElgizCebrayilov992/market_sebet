@@ -1,4 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:market_sebet/core/feature/basket/basket_view.dart';
+import 'package:market_sebet/core/init/lang/local.keys.g.dart';
 
 import '../photo/view/photos_view.dart';
 import 'model/tabbar_model.dart';
@@ -6,16 +9,14 @@ import 'model/tabbar_model.dart';
 class AppTabBar extends StatelessWidget {
   final List<TabModel> tabsItem = [
     TabModel(
-      title: 'Photos',
+      title: LocalKeys.tabBar_home,
       icon: Icons.ac_unit,
       page: PhotosView(),
     ),
     TabModel(
-      title: 'Basket',
+      title: LocalKeys.tabBar_basket,
       icon: Icons.accessibility_outlined,
-      page: Container(
-        color: Colors.red,
-      ),
+      page: BasketView(),
     ),
   ];
 
@@ -37,7 +38,7 @@ class AppTabBar extends StatelessWidget {
       tabs: List.generate(
         tabsItem.length,
         (index) => Tab(
-          text: tabsItem[index].title,
+          text: tabsItem[index].title.tr(),
           icon: Icon(tabsItem[index].icon),
         ),
       ),

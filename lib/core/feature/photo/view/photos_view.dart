@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:market_sebet/product/manager/shop/shop_manager.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../product/widget/card_shop.dart';
 import '../viewmodel/photo_view_model.dart';
@@ -13,7 +15,7 @@ class PhotosView extends StatelessWidget {
       appBar: AppBar(
         leading: buildObserverIsLoading(),
         actions: [
-          buildActionChip(),
+          buildActionChip(context),
         ],
       ),
       body: buildGridView(),
@@ -22,17 +24,17 @@ class PhotosView extends StatelessWidget {
 
   Observer buildObserverIsLoading() {
     return Observer(builder: (_) {
-        return Visibility(
-          child: CircularProgressIndicator(),
-          visible: _viewModel.isLoading,
-        );
-      });
+      return Visibility(
+        child: CircularProgressIndicator(),
+        visible: _viewModel.isLoading,
+      );
+    });
   }
 
-  ActionChip buildActionChip() {
+  ActionChip buildActionChip(BuildContext context) {
     return ActionChip(
       avatar: Icon(Icons.shopping_bag),
-      label: Text('\$10'),
+      label: Text('\$${context.watch<ShopManager>().totalMoney}'),
       onPressed: () {},
     );
   }

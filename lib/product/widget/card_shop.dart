@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kartal/kartal.dart';
+import '../manager/shop/shop_manager.dart';
+import 'package:provider/provider.dart';
 import '../../core/feature/photo/model/photo_model.dart';
 
 class PhotoCard extends StatefulWidget {
@@ -11,9 +13,15 @@ class PhotoCard extends StatefulWidget {
   _PhotoCardState createState() => _PhotoCardState();
 }
 
-class _PhotoCardState extends State<PhotoCard> {
+class _PhotoCardState extends State<PhotoCard>
+    with AutomaticKeepAliveClientMixin {
   bool icrementIsOpen = false;
   void isIncrement() {
+    if (!icrementIsOpen) {
+      context.read<ShopManager>().addShopItem(widget.model);
+    } else {
+      context.read<ShopManager>().removeShopItem(widget.model);
+    }
     setState(() {
       icrementIsOpen = !icrementIsOpen;
     });
@@ -21,6 +29,7 @@ class _PhotoCardState extends State<PhotoCard> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Card(
       elevation: 10,
       child: Stack(
@@ -61,7 +70,12 @@ class _PhotoCardState extends State<PhotoCard> {
             flex: 4,
             child: buildIconButtonPilus(),
           ),
-          Spacer(),
+          Expanded(
+            flex: 2,
+            child: Text(
+              widget.model.count.toString(),
+            ),
+          ),
           Expanded(
             flex: 4,
             child: buildIconButtonMinus(),
@@ -76,7 +90,10 @@ class _PhotoCardState extends State<PhotoCard> {
     return IconButton(
       padding: EdgeInsets.zero,
       icon: Icon(Icons.remove),
-      onPressed: () {},
+      onPressed: () {
+        context.read<ShopManager>().azaltShopItem(widget.model);
+        //  widget.model.count = widget.model.count - 1;
+      },
     );
   }
 
@@ -84,7 +101,13 @@ class _PhotoCardState extends State<PhotoCard> {
     return IconButton(
       padding: EdgeInsets.zero,
       icon: Icon(Icons.add),
-      onPressed: () {},
+      onPressed: () {
+        context.read<ShopManager>().artirShopItem(widget.model);
+        // widget.model.count = widget.model.count + 1;
+      },
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

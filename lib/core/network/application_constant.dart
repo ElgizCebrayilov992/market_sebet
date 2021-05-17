@@ -1,4 +1,3 @@
-
 class ApplicationConstant {
   static ApplicationConstant? _instace;
   static ApplicationConstant get instance {
@@ -9,5 +8,6 @@ class ApplicationConstant {
 
   ApplicationConstant._init();
 
-  final String baseUrl='https://jsonplaceholder.typicode.com/';
+  final String baseUrl = 'https://jsonplaceholder.typicode.com/';
+  final String langPath = 'assets/lang';
 }
